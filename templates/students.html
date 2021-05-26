@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+<html>
+<head><title>DATA</title></head>
+
+<body>
+{% block content %}
+
+<table class="table table-bordered " >
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>studentname</th>
+        <th>Hallticket Number</th>
+        <th>ExamType</th>
+        <th>Medium</th>
+        <th>Barcode</th>
+        <th>OldBarcode</th>
+        <th>Attendance</th>
+
+    </tr>
+    </thead>
+    <tbody>
+      <form method="POST" action="{% url 'barcode' %}">
+      {% csrf_token %}
+    {% for i in students  %}
+    <tr>
+        <td>{{ i.id }}</td>
+        <td>{{ i.sname }}</td>
+        <td>{{ i.htno }}</td>
+        <td>{{ i.ExamType }}</td>
+        <td>{{ i.medium }}</td>
+        <td>{{ i.Barcode }}</td>
+        <td>{{ i.OldBarcode }}</td>
+        <td>
+
+  <div class="form-row align-items-center">
+
+      <label class="mr-sm-2" for="inlineFormCustomSelect"></label>
+      <select class="custom-select mr-sm-2" name="barcode" id="inlineFormCustomSelect">
+        <option selected>Choose...</option>
+        <option value="P">Present</option>
+        <option value="A">Absent</option>
+        <option value="M">MallPractice</option>
+      </select>
+
+  </div>
+
+        </td>
+    </tr>
+    {% endfor %}
+
+</form>
+
+    </tbody>
+
+
+</table>
+  <input type="submit"  class="btn btn-success align-items-center">
+{% endblock %}
+
+
+
+</body>
+
+</html>

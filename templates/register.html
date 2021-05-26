@@ -1,0 +1,60 @@
+{% load static  %}
+<html>
+<head>
+    <title>login</title>
+        {% include 'cdnlines.html' %}
+</head>
+<style>
+    #card1 {margin-top: 30px}
+    #butt {margin-top: 30px ;padding-left: 5px}
+    #butt1 {margin-top: 30px}
+    #user {padding-bottom:15px}
+    #pass1 {padding-bottom:15px}
+</style>
+<body class="bg-primary">
+{% include 'navbar.html' %}
+{% load static  %}
+
+<div class="container bg-primary" id="user">
+    <div class="row">
+      <div class="offset-md-3 col-md-5">
+        <div class="card" id=card1>
+            <div class="card-header">
+                <h3>Register</h3>
+            </div>
+            <div class="card-body">
+                  <form method="POST" >
+                      {% csrf_token %}
+                      <div class="container">
+                          <div class="row " id="user">
+                             <h5>{{ form.username }}</h5>
+                          </div>
+                          <div class="row" id="pass1">
+                           <h5>{{ form.password1 }}</h5>
+                          </div>
+                          <div class="row" id="pass2">
+                            <h5>{{ form.password2 }}</h5>
+                          </div>
+                      </div>
+                      <input class="btn btn-primary" id="butt" type="submit" value="Register">
+                      <input class="btn btn-warning" id="butt1" type="reset" value="clear">
+                  </form>
+            </div>
+            {{ form.errors }}
+                <div class="d-flex justify-content-center">
+                    Already Have An Account? <a href="{% url 'login' %}" class="ml-3 ">Login</a>
+                </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Username...'
+    form_fields[2].placeholder = 'Password...'
+    form_fields[3].placeholder = 'Confirm Password...'
+</script>
+
+</body>
+</html>

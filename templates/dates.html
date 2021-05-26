@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+<html>
+<head><title>DATA</title></head>
+<body >
+{% block content %}
+<table class="table ">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>Course</th>
+        <th>CourseName</th>
+        <th>Papercode</th>
+        <th>SubjectCode</th>
+        <th>SubjectName</th>
+        <th>Total</th>
+        <th>present</th>
+        <th>absent</th>
+        <th>malpractise</th>
+        <th>buffer</th>
+        <th>pending</th>
+        <th>select</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in dates  %}
+    <tr>
+
+        <td>{{ i.id }}</td>
+        <td>{{ i.Course }}</td>
+        <td>{{ i.CourseName }}</td>
+        <td>{{ i.papercode }}</td>
+        <td>{{ i.SubjectCode }}</td>
+        <td>{{ i.SubjectName }}</td>
+        <td>{{ i.Total }}</td>
+        <td>{{ i.present }}</td>
+        <td>{{ i.absent }}</td>
+        <td>{{ i.malpractise }}</td>
+        <td>{{ i.buffer }}</td>
+        <td>{{ i.pending }}</td>
+        <td><a href="{% url 'studentsedit' i.papercode %}" class="btn btn-primary">select</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+</body>
+</html>

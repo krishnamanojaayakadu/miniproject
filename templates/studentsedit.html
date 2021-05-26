@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+<html>
+<head><title>DATA</title></head>
+
+
+<body>
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <a href="{% url 'student' qp %}" class="btn btn-warning " >MANAGE ATTENDANCE</a>
+
+
+            <a  class="btn btn-warning " >MANAGE BUFFER</a>
+
+
+            <a class="btn btn-warning " >PRINT ATTENDANCE</a>
+        </div>
+
+        <div class=" col-md-12">
+             <table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>studentname</th>
+        <th>Hallticket Number</th>
+        <th>ExamType</th>
+        <th>Medium</th>
+        <th>Barcode</th>
+        <th>OldBarcode</th>
+        <th>Attendance</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in students  %}
+    <tr>
+        <td>{{ i.id }}</td>
+        <td>{{ i.sname }}</td>
+        <td>{{ i.htno }}</td>
+        <td>{{ i.ExamType }}</td>
+        <td>{{ i.medium }}</td>
+        <td>{{ i.Barcode }}</td>
+        <td>{{ i.OldBarcode }}</td>
+        <td>
+            <div class="btn-group">
+                     <a>PRESENT</a>
+
+                 </div>
+        </td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+</body>
+
+</html>

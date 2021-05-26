@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+<html>
+<head><title>DATA</title></head>
+<body>
+{% block content %}
+<table class="table css-serial ">
+    <thead>
+    <tr>
+        <th>s.no</th>
+        <th>examdate</th>
+        <th>Total</th>
+        <th>present</th>
+        <th>absent</th>
+        <th>malpractise</th>
+        <th>buffer</th>
+        <th>pending</th>
+        <th>select</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in dates  %}
+    <tr>
+
+        <td>{{ i.id }}</td>
+        <td>{{ i.ExamDate }}</td>
+        <td>{{ i.Total }}</td>
+        <td>{{ i.present }}</td>
+        <td>{{ i.absent }}</td>
+        <td>{{ i.malpractise }}</td>
+        <td>{{ i.buffer }}</td>
+        <td>{{ i.pending }}</td>
+        <td><a href="{% url 'dates' i.ExamDate %}" class="btn btn-primary">select</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+</body>
+</html>
